@@ -11,21 +11,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Overpass:wght@400;700&display=swap" rel="stylesheet">
   
   <title>Frontend Mentor | Interactive rating component</title>
-
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-
-  <!-- ### Primary
-  
-  - Orange: hsl(25, 97%, 53%)
-  
-  ### Neutral
-  
-  - White: hsl(0, 0%, 100%)
-  - Light Grey: hsl(217, 12%, 63%)
-  - Medium Grey: hsl(216, 12%, 54%)
-  - Dark Blue: hsl(213, 19%, 18%)
-  - Very Dark Blue: hsl(216, 12%, 8%) -->
-
   <style>
     body {
       margin: 0;
@@ -46,7 +31,7 @@
     .container {
       width: 320px;
       padding: 1.5rem;
-      border-radius: 10%;
+      border-radius: 7%;
       background-color: hsl(215, 22%, 15%);
     }
 
@@ -55,10 +40,10 @@
 
     }
 
-    .star img {
+    .star {
       height: 14px;
       width: 14px;
-      padding: 8px 8px;
+      padding: 14px 14px;
       border-radius: 50%;
       background-color: hsl(213, 19%, 18%);
     }
@@ -70,13 +55,14 @@
     p {
       font-size: 0.9rem;
       color: hsl(216, 12%, 54%);
+      margin: 0;
     }
 
     form {
       display: grid;
       column-gap: 20px;
       grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: 1fr 1fr;
+      grid-template-rows: 1fr 0.5fr;
     }
 
 
@@ -91,19 +77,25 @@
       user-select: none;
       height: 16px;
       width: 16px;
-      padding: 10px 10px;
+      padding: 14px 14px;
       border-radius: 50%;
       background-color: hsl(213, 19%, 18%);
       color: hsl(216, 12%, 54%);
+      margin: 20px auto;
+      transition-duration: 500ms;
+      transition-property: background-color color;
     }
 
     input[type="radio"]:checked + label {
-	    background: #ffe0a6;
+	    background: hsl(25, 97%, 53%);
+      color: hsl(0, 0%, 100%);
     }
 
 
-    input[type="radio"]:hover {
-      background-color: aquamarine;
+    input[type="radio"]:hover + label,
+    input[type="radio"]:focus + label {
+      background-color: hsl(217, 12%, 63%);
+      color: hsl(0, 0%, 100%);
     }
 
     input[type="submit"] {
@@ -112,19 +104,44 @@
       color: hsl(0, 0%, 100%);
       text-transform: uppercase;
       letter-spacing: 0.1rem;
-      font-weight: 400;
+      font-weight: 700;
       grid-column: 1/6;
       padding: 0.5rem;
-      margin-top: 0.7rem;
       width: 100%;
       cursor: pointer;
       background-color: hsl(25, 97%, 53%);
       border-radius: 50px;
+      transition-duration: 500ms;
+      transition-property: background-color color;
     }
 
-    .thank-you-container {
+    input[type="submit"]:hover,
+    input[type="submit"]:focus {
+      background-color: hsl(0, 0%, 100%);
+      color: hsl(25, 97%, 53%);
+    }
+
+    .thank-you-state {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      align-items: center;
+    }
+
+    .thank-you-state p:nth-of-type(1) {
+      width: 50%;
+      margin-top: 20px;
+      padding: 10px;
+      background-color: hsl(213, 19%, 18%);
+      color: hsl(25, 97%, 53%);
+      border-radius: 20px;
+    }
+
+    .hidden {
       display: none;
     }
+
+    
 
   </style>
 </head>
@@ -135,50 +152,65 @@
     </h1>
 
     <section class="container">
-      <div class="star"><img src="images/icon-star.svg" alt=""></div>
-
-      <h2>How did we do?</h2>
+      <div class="start-state">
+          <img class="star" src="images/icon-star.svg" alt="">
+          
+          <h2>How did we do?</h2>
+          
+          <p>Please let us know how we did with your support request. All feedback is appreciated
+            to help us improve our offering!</p>
+          <form>
+            <input type="radio" id="radio1" name="rating"></input>
+            <label for="radio1">1</label>
+            <input type="radio" id="radio2" name="rating">
+            <label for="radio2">2</label>
+            <input type="radio" id="radio3" name="rating">
+            <label for="radio3">3</label>
+            <input type="radio" id="radio4" name="rating">
+            <label for="radio4">4</label>
+            <input type="radio" id="radio5" name="rating">
+            <label for="radio5">5</label>
+            <input type="submit" value="Submit">
+          </form>
+      </div>
       
-      <p>Please let us know how we did with your support request. All feedback is appreciated
-      to help us improve our offering!</p>
-      <form>
-        <input type="radio" id="radio1" name="rating"></input>
-        <label for="radio1">1</label>
-        <input type="radio" id="radio2" name="rating">
-        <label for="radio2">2</label>
-        <input type="radio" id="radio3" name="rating">
-        <label for="radio3">3</label>
-        <input type="radio" id="radio4" name="rating">
-        <label for="radio4">4</label>
-        <input type="radio" id="radio5" name="rating">
-        <label for="radio5">5</label>
-        <input type="submit" value="Submit">
-      </form>
+
+      <div class="thank-you-state hidden">
+        <img src="images/illustration-thank-you.svg" alt="">
+
+        <p>You selected <span class="rating">4</span> out of 5</p>
+      
+        <h2>Thank you!</h2>
+      
+        <p>We appreciate you taking the time to give a rating. If you ever need more support,
+        don’t hesitate to get in touch!</p>
+
+      </div>
       
     </section>
-    <!-- Rating state start -->
-    
-
-  
-
-  <!-- Rating state end -->
-
-  <!-- Thank you state start -->
-  
-  <section class="thank-you-container">
-    You selected <!-- Add rating here --> out of 5
-    
-    Thank you!
-    
-    We appreciate you taking the time to give a rating. If you ever need more support,
-    don’t hesitate to get in touch!
-    
-    <!-- Thank you state end -->
-  </section>
-  
   </main>
   
+  <script>
+    let rating = 1;
+    const submitBtn = document.querySelector('input[type="submit"]');
+    const startState = document.querySelector('.start-state');
+    const thankYouState = document.querySelector('.thank-you-state');
+    const span = document.querySelector('.rating');
+    const form = document.querySelector('form');
 
+    form.addEventListener('change', function(e) {
+      if (e.target.checked) {
+        rating = e.target.labels[0].innerText;
+      }
+    });
+
+    submitBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      startState.classList.add('hidden');
+      thankYouState.classList.remove('hidden');
+      span.innerText = rating;
+    });
+  </script>
   
   
 </body>
