@@ -45,12 +45,6 @@
 
     .container {
       width: 320px;
-
-      display: grid;
-      column-gap: 20px;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: 140px 50px 1fr 1fr 1fr;
-
       padding: 1.5rem;
       border-radius: 10%;
       background-color: hsl(215, 22%, 15%);
@@ -58,8 +52,7 @@
 
     .star {
       display: inline-block;
-      grid-row: 1;
-      grid-column: span 5;
+
     }
 
     .star img {
@@ -72,13 +65,18 @@
 
     h2 {
       font-weight: 700;
-      grid-row: span 2;
-      grid-column: span 5;
     }
 
     p {
       font-size: 0.9rem;
       color: hsl(216, 12%, 54%);
+    }
+
+    form {
+      display: grid;
+      column-gap: 20px;
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: 1fr 1fr;
     }
 
 
